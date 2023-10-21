@@ -49,10 +49,6 @@ async function handleAddToWishList(productId) {
     queryFn: () => getProducts(page),
     keepPreviousData : true
   });
-
-  // console.log(data);
-  
-  console.log(data);
   return <>
   <Helmet>
     <title>All Products</title>

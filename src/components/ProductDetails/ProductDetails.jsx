@@ -78,7 +78,7 @@ async function handleAddToWishList(productId) {
   // console.log(data);
   return <>
     <Helmet>
-      <title>{data.title.split(' ').slice(0,4).join(' ')}</title>
+      <title>{data?.title.split(' ').slice(0,4).join(' ')}</title>
     </Helmet>
     {data?<>
         <div className="my-5">
