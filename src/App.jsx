@@ -1,4 +1,4 @@
-import {RouterProvider, createBrowserRouter} from 'react-router-dom'
+import {RouterProvider, createBrowserRouter, createHashRouter} from 'react-router-dom'
 import Layout from './components/Layout/Layout'
 import Contact from './components/Contact/Contact'
 import Home from './components/Home/Home'
@@ -37,7 +37,7 @@ function App() {
 
   let queryClient = new QueryClient();
 
-  let routes = createBrowserRouter([
+  let routes = createHashRouter([
     {path:'/', element: <Layout/>, children:[
       {index:true, element:<Home/>},
       {path:'/contact', element:<Contact/>},
