@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
+import { Helmet } from 'react-helmet'
 import { Link, useNavigate } from 'react-router-dom'
 import * as Yup from 'Yup'
 
@@ -70,6 +71,9 @@ export default function ForgetPassword() {
 
 
   return <>
+  <Helmet>
+    <title>Forget Password</title>
+  </Helmet>
     <div className="row my-5 py-5 justify-content-center">
       <div className="col-md-5 shadow px-4 py-5">
         <form onSubmit={formik.handleSubmit} id='forgetPassword'>

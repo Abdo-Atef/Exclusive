@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { getUserOrders } from '../../redux/uesrOrdersSlice'
 import Loader from '../Loader/Loader';
 import Emptyorders from '../../assets/empty-box_2.png'
+import { Helmet } from 'react-helmet';
 
 
 export default function MyOrders() {
@@ -17,6 +18,9 @@ export default function MyOrders() {
   }, [])
 
   return <>
+    <Helmet>
+      <title>My Orders</title>
+    </Helmet>
     <div className="my-5 fs-14">
       <Link to={'/'} className="text3 opacity-50 me-2"> Home</Link>/
       <span className='ms-2'> My Orders </span>

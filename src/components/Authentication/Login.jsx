@@ -6,6 +6,7 @@ import * as Yup from 'Yup'
 import axios from 'axios'
 import { setUserData, setUserToken } from '../../redux/userSlice'
 import { useDispatch} from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 export default function Login() {
   let navigate = useNavigate();
@@ -48,6 +49,9 @@ export default function Login() {
 
 
   return <>
+    <Helmet>
+      <title>Login</title>
+    </Helmet>
     <div className="row my-5 g-5 align-items-center">
       <div className="loginImage col-md-6">
         <img src={image} className='w-100 p-xl-5' alt='login Image' />

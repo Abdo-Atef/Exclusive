@@ -5,6 +5,7 @@ import * as Yup from 'Yup'
 import axios from 'axios'
 import emailjs from '@emailjs/browser';
 import toast from 'react-hot-toast'
+import { Helmet } from 'react-helmet'
 export default function Contact() {
 
   const [isLoading, setisLoading] = useState(false)
@@ -46,6 +47,9 @@ export default function Contact() {
   })
 
   return <>
+  <Helmet>
+    <title>Contact</title>
+  </Helmet>
     <div className="py-5 fs-14">
       <Link to={'/'} className="text3 opacity-50 me-2"> Home</Link>/
       <span className='ms-2'> Contact </span>

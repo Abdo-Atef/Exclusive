@@ -8,6 +8,7 @@ import { addToWishList, removeFromWishList, setwishListIds } from '../../redux/w
 import { addToCart } from '../../redux/cartSlice';
 import Loader from '../Loader/Loader';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 export default function AllProducts() {
 
@@ -51,8 +52,11 @@ async function handleAddToWishList(productId) {
 
   // console.log(data);
   
-
+  console.log(data);
   return <>
+  <Helmet>
+    <title>All Products</title>
+  </Helmet>
   {data?<>
     <div className="row g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 my-5">
     {data?.data.map((product , index)=> 

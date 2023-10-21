@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from 'Yup'
 import axios from 'axios'
+import { Helmet } from 'react-helmet'
 
 export default function SignUp() {
 
@@ -49,6 +50,9 @@ export default function SignUp() {
 
 
   return <>
+  <Helmet>
+    <title>Sign Up</title>
+  </Helmet>
   <div className="row my-5 g-5 align-items-center">
     <div className="loginImage col-md-6">
       <img src={image} className='w-100 p-xl-5' alt='login Image' />

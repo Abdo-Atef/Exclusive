@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import style from './account.module.css'
+import { Helmet } from 'react-helmet';
 
 
 export default function Account() {
@@ -9,6 +10,9 @@ export default function Account() {
   const {userData} = useSelector((state)=> state.userToken);
 
   return <>
+  <Helmet>
+    <title>My Account</title>
+  </Helmet>
     <div className="py-5 fs-14 d-flex justify-content-between">
       <div>
         <Link to={'/'} className="text3 opacity-50 me-2"> Home</Link>/

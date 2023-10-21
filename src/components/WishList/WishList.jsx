@@ -6,6 +6,7 @@ import { ProductsContext } from '../../Context/ProductsContext';
 import { addToCart } from '../../redux/cartSlice';
 import Loader from '../Loader/Loader'
 import wishEmpty from '../../assets/empty_wishlist.png'
+import { Helmet } from 'react-helmet';
 
 export default function WishList() {
   let dispatch = useDispatch();
@@ -33,6 +34,9 @@ export default function WishList() {
   },[])
 
   return <>
+  <Helmet>
+    <title>WishList</title>
+  </Helmet>
   <div className="py-5 fs-14">
       <Link to={'/'} className="text3 opacity-50 me-2"> Home</Link>/
       <span className='ms-2'> WishList </span>

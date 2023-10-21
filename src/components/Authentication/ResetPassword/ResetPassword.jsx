@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
+import { Helmet } from 'react-helmet'
 import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
 import * as Yup from 'Yup'
@@ -47,6 +48,9 @@ export default function ResetPassword() {
   })
 
   return <>
+    <Helmet>
+      <title>Reset Password</title>
+    </Helmet>
     <div className="row my-5 py-5 justify-content-center">
       <div className="col-md-5 shadow px-4 py-5">
         <form onSubmit={formik.handleSubmit}>

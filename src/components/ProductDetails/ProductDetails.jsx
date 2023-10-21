@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
 import { addToWishList, removeFromWishList, setwishListIds } from "../../redux/wishListSlice";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 export default function ProductDetails() {
   const {id} = useParams();
@@ -76,6 +77,9 @@ async function handleAddToWishList(productId) {
   let {data, isLoading} = useQuery('getSpeceficProduct', getSpeceficProduct);
   // console.log(data);
   return <>
+    <Helmet>
+      <title>{data.title.split(' ').slice(0,4).join(' ')}</title>
+    </Helmet>
     {data?<>
         <div className="my-5">
           <Link to={'/'} className="text3 opacity-50"> Home / </Link>

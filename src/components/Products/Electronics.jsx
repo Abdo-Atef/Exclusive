@@ -7,6 +7,7 @@ import { addToWishList, removeFromWishList, setwishListIds } from '../../redux/w
 import { addToCart } from '../../redux/cartSlice';
 import Loader from '../Loader/Loader';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 export default function Electronics() {
 
@@ -47,6 +48,9 @@ export default function Electronics() {
   let {data, isLoading} = useQuery('Electronics', getElectronicsProducts)
 
   return <>
+    <Helmet>
+      <title>Electronics Products</title>
+    </Helmet>
     {!data?<Loader/>:<div className="row g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 my-5">
     {data?.map((product , index)=> 
       <div key={index}>

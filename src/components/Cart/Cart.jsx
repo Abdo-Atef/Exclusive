@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import style from './cart.module.css'
 import Loader from '../Loader/Loader'
+import { Helmet } from 'react-helmet'
 
 export default function Cart() {
   const dispatch = useDispatch()
@@ -40,6 +41,9 @@ export default function Cart() {
   },[])
 
   return <>
+  <Helmet>
+    <title>Cart</title>
+  </Helmet>
     <div className="py-5 fs-14">
       <Link to={'/'} className="text3 opacity-50 me-2"> Home</Link>/
       <span className='ms-2'> Cart </span>
