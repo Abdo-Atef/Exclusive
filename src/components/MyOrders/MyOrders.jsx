@@ -11,8 +11,6 @@ export default function MyOrders() {
   let dispatch = useDispatch();
   const {orders, isLoading} = useSelector((state)=> state.userOrders)
 
-  console.log(orders);
-
   useEffect(() => {
     dispatch(getUserOrders());
   }, [])

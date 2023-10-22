@@ -34,8 +34,9 @@ export default function UserSection() {
       setActive(true);
     }
   }
+  
   return <>
-    <li onClick={toggle} className={`${style.list}`}>
+    <li onClick={toggle} className={`${style.list} profileIconss`}>
       <i id='profileIcon' className="fa-regular fa-user fs-6 cursor-pointer d-flex justify-content-center align-items-center rounded-circle" style={{width:'32px',height:'32px'}}></i>
       <ul id='profileList' className='d-none'>
         <li><i className="fa-regular fa-user  text-white"></i> <Link to={'/account/myProfile'}>Manage My Account</Link></li>

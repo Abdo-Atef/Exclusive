@@ -25,7 +25,7 @@ export let createOnlineOrder = createAsyncThunk('ordersSlice/createOnlineOrder',
       token:localStorage.getItem('userToken')
     }
 
-    return axios.post(`${BaseUrl}/api/v1/orders/checkout-session/${cartId}?url=http://localhost:3000`, {
+    return axios.post(`${BaseUrl}/api/v1/orders/checkout-session/${cartId}?url=https://abdo-tech.me/`, {
       shippingAddress: values
     } , {headers})
     .then((res)=> res)
@@ -54,10 +54,10 @@ extraReducers:(builder)=>{
     state.orders = action.payload;
     state.isLoading = false;
   })
-  builder.addCase(getUserOrders.rejected, (state, action)=>{
+  builder.addCase(getUserOrders.rejected, (state)=>{
     state.isLoading = false;
   })
-  builder.addCase(getUserOrders.pending, (state, action)=>{
+  builder.addCase(getUserOrders.pending, (state)=>{
     state.isLoading = true;
   })
 }

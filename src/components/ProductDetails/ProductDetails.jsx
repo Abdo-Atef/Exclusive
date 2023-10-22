@@ -78,13 +78,13 @@ async function handleAddToWishList(productId) {
   // console.log(data);
   return <>
     <Helmet>
-      <title>{data?.title.split(' ').slice(0,4).join(' ')}</title>
+      <title>{data?.title.split(' ').slice(0,3).join(' ')}</title>
     </Helmet>
     {data?<>
-        <div className="my-5">
-          <Link to={'/'} className="text3 opacity-50"> Home / </Link>
-          <Link to={'/products/electronics'} className="text3 opacity-50"> {data.category.name} / </Link>
-          {data.title.split(' ').slice(0,4).join(' ')}
+        <div className="py-5 fs-14">
+          <Link to={'/'} className="text3 opacity-50 me-2"> Home</Link>/
+          <Link to={'/products/electronics'} className="text3 opacity-50 me-2"> {data.category.name}</Link>/
+          <span className='ms-2'> {data.title.split(' ').slice(0,4).join(' ')} </span>
         </div>
         <div className="row algin-items-center g-5 mb-5">
           <div className={`productDetailsSlider col-md-6`}>

@@ -16,7 +16,8 @@ export default function Cart() {
   // console.log(cartList);
 
   async  function updateCart ( id, count ) {
-    setUpdateLoading(true);
+    if (count > 0) {
+      setUpdateLoading(true);
     const headers = {
       token: localStorage.getItem('userToken')
     }
@@ -27,6 +28,7 @@ export default function Cart() {
     } catch (error) {
       console.log(error);
       setUpdateLoading(false);
+    }
     }
   }
 
