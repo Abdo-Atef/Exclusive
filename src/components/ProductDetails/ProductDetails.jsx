@@ -86,7 +86,7 @@ async function handleAddToWishList(productId) {
           <Link to={'/products/electronics'} className="text3 opacity-50 me-2"> {data.category.name}</Link>/
           <span className='ms-2'> {data.title.split(' ').slice(0,4).join(' ')} </span>
         </div>
-        <div className="row algin-items-center g-5 mb-5">
+        <div className="row algin-items-center g-md-5 gy-5 mb-5">
           <div className={`productDetailsSlider col-md-6`}>
             <ProductSlider id={id} data={data}/>
           </div>
@@ -132,7 +132,7 @@ async function handleAddToWishList(productId) {
               </div>
               <div className="d-flex gap-2 gap-sm-3">
                 <button onClick={()=>handleAddToCart(data.id)} className="border-0 rounded-2 button2 text-white text1 btn-sm p-sm-2 fs-14 px-sm-3">Add To Card</button>
-                {checkWishList(data.id)?
+                {checkWishList(data.id) && userToken?
                 <button onClick={()=>handleRemoveFromWishList(data.id)} className="border border-1 border-black border-opacity-50 bg-white d-flex justify-content-center align-items-center rounded-1" style={{width:'40px',height:'40px'}}><i className="bi fs-5 pt-1 bi-heart-fill text-danger"></i></button>
                 :
                 <button onClick={()=>handleAddToWishList(data.id)} className="border border-1 border-black border-opacity-50 bg-white d-flex justify-content-center align-items-center rounded-1" style={{width:'40px',height:'40px'}}><i className="bi fs-5 pt-1 bi-heart"></i></button>

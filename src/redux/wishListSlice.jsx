@@ -63,13 +63,13 @@ let wishListSlice = createSlice({
   },
   extraReducers:(builder)=>{
     builder.addCase(getWishList.fulfilled , (state, action)=>{
-      state.isLoading = false
       const arr = [];
       state.wishList = action.payload
       for (let i = 0; i < (action.payload).length; i++) {
         arr.push((action.payload)[i].id)
       }
       state.wishListIds = arr;
+      state.isLoading = false;
     })
     builder.addCase(getWishList.pending , (state)=>{
       state.isLoading = true

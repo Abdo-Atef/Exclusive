@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export let ProductsContext = createContext();
 
@@ -45,8 +45,23 @@ export default function ProductsContextProvider({children}){
     }
   }
 
+  const [Visability, setVisability] = useState(false)
+
+  function passsVisability(passInput, showIcon){
+    if (Visability) {
+      setVisability(false);
+      document.getElementById(`${passInput}`).type = 'password';
+      document.getElementById(`${showIcon}`).classList.replace('fa-eye-slash', 'fa-eye');
+    }
+    else{
+      setVisability(true);
+      document.getElementById(`${passInput}`).type = 'text';
+      document.getElementById(`${showIcon}`).classList.replace('fa-eye', 'fa-eye-slash');
+      }
+    }
+
   return <>
-    <ProductsContext.Provider value={{getProducts, checkRating, getProductsByCategory}}>
+    <ProductsContext.Provider value={{getProducts, checkRating, getProductsByCategory, passsVisability}}>
       {children}
     </ProductsContext.Provider>
   </>

@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'Yup'
 import axios from 'axios'
 import { setUserToken } from '../../../redux/userSlice'
 import { useDispatch } from 'react-redux'
+import { ProductsContext } from '../../../Context/ProductsContext'
 
 export default function ChangePassword() {
   let dispatch = useDispatch();
   const [isLoading, setisLoading] = useState(false)
   const [isError, setisError] = useState(false)
   const [isSucces, setisSucces] = useState(false)
+  const {passsVisability} = useContext(ProductsContext)
   
   async function changeSubmit(values) {
     const headers = {
@@ -52,19 +54,22 @@ export default function ChangePassword() {
   return <>
   
   <form className='mt-4 pt-2 d-flex flex-column gap-4' onSubmit={formik.handleSubmit}>
-      <div>
+      <div className='position-relative'>
         <label className='fs-14 mb-2' htmlFor="currentPassword">CurrentPassword*</label>
         <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.currentPassword} id='currentPassword' name='currentPassword' type="password" className='border-0 secondry1 px-2 rounded-1 sign_in_out_inputs' />
+        <span className='position-absolute cursor-pointer end-0 opacity-75 mt-2 me-2' onClick={()=>passsVisability('currentPassword', 'showIcon1')}><i id='showIcon1' className="fa-solid fa-eye"></i></span>
         {formik.errors.currentPassword && formik.touched.currentPassword?<p className=" text-danger fs-14 my-1">{formik.errors.currentPassword}</p>:''}
       </div>
-      <div>
+      <div className='position-relative'>
         <label className='fs-14 mb-2' htmlFor="password">New Password*</label>
         <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} id='password' name='password' type="password" className='border-0 secondry1 px-2 rounded-1 sign_in_out_inputs' />
+        <span className='position-absolute cursor-pointer end-0 opacity-75 mt-2 me-2' onClick={()=>passsVisability('password', 'showIcon2')}><i id='showIcon2' className="fa-solid fa-eye"></i></span>
         {formik.errors.password && formik.touched.password?<p className=" text-danger fs-14 my-1">{formik.errors.password}</p>:''}
       </div>
-      <div>
+      <div className='position-relative'>
         <label className='fs-14 mb-2' htmlFor="rePassword">rePassword*</label>
         <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.rePassword} id='rePassword' name='rePassword' type="password" className='border-0 secondry1 px-2 rounded-1 sign_in_out_inputs' />
+        <span className='position-absolute cursor-pointer end-0 opacity-75 mt-2 me-2' onClick={()=>passsVisability('rePassword', 'showIcon3')}><i id='showIcon3' className="fa-solid fa-eye"></i></span>
         {formik.errors.rePassword && formik.touched.rePassword?<p className=" text-danger fs-14 my-1">{formik.errors.rePassword}</p>:''}
       </div>
       <div className='d-flex justify-content-between align-items-center'>

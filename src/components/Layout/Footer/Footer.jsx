@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return <>
-    <div className=' text1 main-bg-black text-center pb-3'>
+    <footer className='text1 main-bg-black text-center pb-3'>
       <div className="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 m-0 gy-5">
         <div>
           <h3 className='ms-0 h5 mb-3'>Exclusive</h3>
@@ -36,7 +36,7 @@ export default function Footer() {
       </div>
       <h5 className='h6 mt-5 fs-14'>Made With <i className="fa-solid fa-heart fa-beat text-danger"></i> by <span className='LogoColor '>Abdelrahman Atef</span></h5>
       <h6 className='fs-12 mt-3 text-secondary'>Designed by Rimel. All right reserved</h6>
-    </div>
+    </footer>
   </>
   
 }

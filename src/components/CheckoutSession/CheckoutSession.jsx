@@ -35,7 +35,7 @@ export default function CheckoutSession() {
     else {
       setLoading(true);
       let res = await dispatch(createOnlineOrder({cartId, values}));
-      console.log(res);
+      // console.log(res);
       if (res.payload.data.status == "success") {
         window.location.href = res.payload.data.session.url;
       }

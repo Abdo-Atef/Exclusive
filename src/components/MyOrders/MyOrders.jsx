@@ -31,7 +31,7 @@ export default function MyOrders() {
             <h3 className='h5 mb-3'>Order({index + 1})</h3>
             <h4 className='h6'>Order Id: {order.id}</h4>
             <p className='mb-2'>order Date: {order.createdAt.split('T').slice(0,1)}</p>
-            <p className='mb-3'>total Order Price: ${Math.round(order.totalOrderPrice / 31)}</p>
+            <p className='mb-3'>total Order Price: <span className='text-danger'>${Math.round(order.totalOrderPrice / 31)}</span></p>
             <div className='border-bottom border-top py-3'>
               {order.cartItems.map((item, index)=> <div key={index} className='d-flex justify-content-between align-items-center'>
                 <div className='d-flex justify-content-start align-items-center gap-3'>

@@ -121,7 +121,7 @@ ul{
   top: 50%;
   transform: translateY(-50%);
 }
-/* -------------------------------------------- */
+/* ----------------- productDetailsSlider --------------------------- */
 .productDetailsSlider .slick-slider{
   display: flex;
   justify-content: space-between;
@@ -146,6 +146,12 @@ ul{
 .slick-dots li{
   width: 100px;
   height: 120px;
+}
+@media (max-width:600px) {
+  .slick-dots li{
+    width: 95px;
+    height: 110px;
+  }
 }
 .sizeCheckBox + div{
   display: flex;

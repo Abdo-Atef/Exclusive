@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import image from '../../assets/Sign_In_Out.png'
 import { Link } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from 'Yup'
 import axios from 'axios'
 import { Helmet } from 'react-helmet'
+import { ProductsContext } from '../../Context/ProductsContext'
 
 export default function SignUp() {
 
   const [isLoading, setisLoading] = useState(false)
   const [isError, setisError] = useState(false)
   const [Success, setSuccess] = useState(false)
+  const {passsVisability} = useContext(ProductsContext)
 
   async function register(values) {
     setisLoading(true);
@@ -53,7 +55,7 @@ export default function SignUp() {
   <Helmet>
     <title>Sign Up</title>
   </Helmet>
-  <div className="row my-5 g-5 align-items-center">
+  <section className="row my-5 g-5 align-items-center">
     <div className="loginImage col-md-6">
       <img src={image} className='w-100 p-xl-5' alt='login Image' />
     </div>
@@ -70,12 +72,14 @@ export default function SignUp() {
         <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} name='email' type="email" className='sign_in_out_inputs' placeholder='Email or Phone Number' />
         {formik.errors.email && formik.touched.email?<p className=" text-danger fs-14 my-1">{formik.errors.email}</p>:''}
         </div>
-        <div>
-        <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} name='password' type="password" className='sign_in_out_inputs' placeholder='Password' />
+        <div className='position-relative'>
+        <input id='passInput' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} name='password' type="password" className='sign_in_out_inputs' placeholder='Password' />
+        <span className='position-absolute cursor-pointer end-0 opacity-75' onClick={()=>passsVisability('passInput', 'showIcon')}><i id='showIcon' className="fa-solid fa-eye"></i></span>
         {formik.errors.password && formik.touched.password?<p className=" text-danger fs-14 my-1">{formik.errors.password}</p>:''}
         </div>
-        <div>
-        <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.rePassword} name='rePassword' type="password" className='sign_in_out_inputs' placeholder='rePassword' />
+        <div className='position-relative'>
+        <input id='rePassInput' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.rePassword} name='rePassword' type="password" className='sign_in_out_inputs' placeholder='rePassword' />
+        <span className='position-absolute cursor-pointer end-0 opacity-75' onClick={()=>passsVisability('rePassInput', 'showIcon2')}><i id='showIcon2' className="fa-solid fa-eye"></i></span>
         {formik.errors.rePassword && formik.touched.rePassword?<p className=" text-danger fs-14 my-1">{formik.errors.rePassword}</p>:''}
         </div>
         <div>
@@ -95,6 +99,6 @@ export default function SignUp() {
 
       <p className='fs-14 text-center mt-4'>Already have account? <Link to={'/login'} className='text-secondry3 ms-1'>Log in</Link></p>
     </div>
-  </div>
+  </section>
 </>
 }

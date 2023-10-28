@@ -8,7 +8,7 @@ export default function ProductSlider({id , data}) {
     customPaging: function (i) {
       return <a className="w-100 h-100 d-block">
         {data?.images[i]?
-          <img src={data?.images[i]} className=" d-block border rounded-2" width={100} height={120} alt={`slide ${i}`} />
+          <img src={data?.images[i]} className={`d-block border rounded-2 h-100 w-100`} alt={`slide ${i}`} />
         :''}
       </a>
     },
@@ -19,7 +19,7 @@ export default function ProductSlider({id , data}) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    
+
   };
 
   return <>

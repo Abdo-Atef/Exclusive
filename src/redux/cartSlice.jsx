@@ -10,13 +10,8 @@ export const getCart = createAsyncThunk('cart/getCart',
     let headers ={
       token:localStorage.getItem('userToken')
     }
-    try {
-      let {data} = await axios.get(`https://ecommerce.routemisr.com/api/v1/cart`, {headers})
-        // console.log(data);
-        return data;
-    } catch (error) {
-      // console.log(error.response.data.message);
-    }
+    let {data} = await axios.get(`https://ecommerce.routemisr.com/api/v1/cart`, {headers})
+    return data
   }
 
 )
@@ -103,17 +98,18 @@ const cartSlice = createSlice({
   },
   extraReducers: (builder)=>{
     builder.addCase(getCart.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.numOfCartItems = action.payload?.numOfCartItems;
-        state.cartList = action.payload;
-        state.cartId = action.payload.data._id;
-      }
+      state.numOfCartItems = action.payload?.numOfCartItems;
+      state.cartList = action.payload;
+      state.cartId = action.payload.data._id;
       state.isLoading = false;
     })
     builder.addCase(getCart.pending, (state) => {
       state.isLoading = true;
     })
     builder.addCase(getCart.rejected, (state) => {
+      state.numOfCartItems = null;
+      state.cartList = null;
+      state.cartId = null;
       state.isLoading = false;
     })
     builder.addCase(deleteCart.fulfilled, (state, action) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import image from '../../assets/Sign_In_Out.png'
 import { Link, json, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
@@ -7,13 +7,14 @@ import axios from 'axios'
 import { setUserData, setUserToken } from '../../redux/userSlice'
 import { useDispatch} from 'react-redux'
 import { Helmet } from 'react-helmet'
+import { ProductsContext } from '../../Context/ProductsContext'
 
 export default function Login() {
   let navigate = useNavigate();
   let dispatch = useDispatch();
-
+  const {passsVisability} = useContext(ProductsContext)
   const [isLoading, setisLoading] = useState(false)
-  const [isError, setisError] = useState(false)
+  const [isError, setisError] = useState(false);
 
   async function loginSubmit(values) {
     setisLoading(true);
@@ -47,12 +48,26 @@ export default function Login() {
     onSubmit:loginSubmit
   })
 
+  // const [Visability, setVisability] = useState(false)
 
+  // function passsVisability(){
+  //   if (Visability) {
+  //     setVisability(false);
+  //     document.getElementById('passInput').type = 'password';
+  //     document.getElementById('showIcon').classList.replace('fa-eye-slash', 'fa-eye');
+  //   }
+  //   else{
+  //     setVisability(true);
+  //     document.getElementById('passInput').type = 'text';
+  //     document.getElementById('showIcon').classList.replace('fa-eye', 'fa-eye-slash');
+  //     }
+  //   }
+  
   return <>
     <Helmet>
       <title>Login</title>
     </Helmet>
-    <div className="row my-5 g-5 align-items-center">
+    <section className="row my-5 g-5 align-items-center">
       <div className="loginImage col-md-6">
         <img src={image} className='w-100 p-xl-5' alt='login Image' />
       </div>
@@ -64,8 +79,9 @@ export default function Login() {
         <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} name='email' type="email" className='sign_in_out_inputs' placeholder='Email or Phone Number' />
         {formik.errors.email && formik.touched.email?<p className=" text-danger fs-14 my-1">{formik.errors.email}</p>:''}
         </div>
-        <div>
-        <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} name='password' type="password" className='sign_in_out_inputs' placeholder='Password' />
+        <div className='position-relative'>
+        <input id='passInput' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} name='password' type="password" className='mb-2 sign_in_out_inputs' placeholder='Password' />
+        <span className='position-absolute cursor-pointer end-0 opacity-75' onClick={()=>passsVisability('passInput', 'showIcon')}><i id='showIcon' className="fa-solid fa-eye"></i></span>
         {formik.errors.password && formik.touched.password?<p className=" text-danger fs-14 my-1">{formik.errors.password}</p>:''}
         </div>
         <div className='d-flex justify-content-between align-items-center'>
@@ -78,6 +94,6 @@ export default function Login() {
       </form>
         <p className='fs-14 text-center mt-5'>Don't have an account? <Link to={'/signUp'} className='text-secondry3 ms-1'>Sign Up</Link></p>
       </div>
-    </div>
+    </section>
   </>
 }
